@@ -663,6 +663,8 @@ GameObject:
   - component: {fileID: 1496212396}
   - component: {fileID: 1496212398}
   - component: {fileID: 1496212397}
+  - component: {fileID: 1496212400}
+  - component: {fileID: 1496212399}
   m_Layer: 5
   m_Name: CatImg
   m_TagString: Untagged
@@ -727,6 +729,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1496212395}
   m_CullTransparentMesh: 1
+--- !u!114 &1496212399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496212395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b0adb20ec34765408bb9ebc04c34085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &1496212400
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496212395}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
