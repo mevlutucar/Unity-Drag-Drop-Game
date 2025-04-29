@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -26,7 +27,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (isDroppedRightPos) return;
-        canvasGroup.alpha = 0.8f;
+        canvasGroup.alpha = 0.6f;
         canvasGroup.blocksRaycasts = false; //nesnenin tiklanabilirlik ozelligini kapat.
     }
 
@@ -43,7 +44,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
         if (!isDroppedRightPos)
         {
-            rectTransform.anchoredPosition = firstPosition;
+            rectTransform.DOAnchorPos(firstPosition, 0.3f).SetEase(Ease.OutBounce);
         }
     }
 }

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -19,12 +20,11 @@ public class DropZone : MonoBehaviour, IDropHandler
         {
             DragDrop dragDrop = droppedObject.GetComponent<DragDrop>();
 
-            if (droppedObject.name == "CatImg")
+            if (droppedObject.name == gameObject.name)
             {
                 dragDrop = droppedObject.GetComponent<DragDrop>();
 
-                dragDrop.GetComponent<RectTransform>().anchoredPosition
-                    = GetComponent<RectTransform>().anchoredPosition;
+                dragDrop.GetComponent<RectTransform>().DOAnchorPos(GetComponent<RectTransform>().anchoredPosition, 0.1f);
 
                 dragDrop.isDroppedRightPos = true;
                 dropZoneTMP.text = string.Empty;
