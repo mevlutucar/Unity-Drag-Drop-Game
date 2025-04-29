@@ -8,9 +8,16 @@ public class DropZone : MonoBehaviour, IDropHandler
 {
     TextMeshProUGUI dropZoneTMP;
 
+    GameManager gameManager;
+
     private void Awake()
     {
         dropZoneTMP = GetComponentInChildren<TextMeshProUGUI>();
+    }
+
+    private void Start()
+    {
+        gameManager = FindAnyObjectByType<GameManager>();
     }
     public void OnDrop(PointerEventData eventData)
     {
@@ -28,11 +35,13 @@ public class DropZone : MonoBehaviour, IDropHandler
 
                 dragDrop.isDroppedRightPos = true;
                 dropZoneTMP.text = string.Empty;
+                gameManager.increaseCorrectDrop();
 
             }
             else
             {
                 dragDrop.isDroppedRightPos = false;
+                gameManager.increaseWrongDrop();
             }
 
         }
