@@ -39,6 +39,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (isDroppedRightPos) return;
         canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = true;
 
