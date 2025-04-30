@@ -1,5 +1,7 @@
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -30,6 +32,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Transform dragObjects;
 
+    [SerializeField]
+    GameObject wonPanel;
+
+    [SerializeField]
+    GameObject losePanel;
+
     private void Start()
     {
         remainingRight = defaultRight;
@@ -43,6 +51,7 @@ public class GameManager : MonoBehaviour
         if (correctDrop == 5)
         {
             Debug.Log("Tebrikler oyunu baþarýyla tamamladýnýz!");
+            setActiveWonPanel();
         }
         else
         {
@@ -74,15 +83,33 @@ public class GameManager : MonoBehaviour
             rmnText.text = $"Kalan Hak Sayýsý: {remainingRight -= 1} ";
             Debug.Log("Hay aksi! oyunda baþarýlý olamadýnýz!");
 
-            Invoke("makeDisableDragObjects", 1f);
+            Invoke("setDisableDragObjects", 1f);
+            setActiveLosePanel();
         }
     }
 
-    void makeDisableDragObjects()
+    void setDisableDragObjects()
     {
         foreach (Transform child in dragObjects)
         {
             child.GetComponent<DragDrop>().enabled = false;
         }
+    }
+
+    void setActiveWonPanel()
+    {
+        wonPanel.SetActive(true);
+        losePanel.SetActive(false);
+    }
+
+    void setActiveLosePanel()
+    {
+        losePanel.SetActive(true);
+        wonPanel.SetActive(false);
+    }
+
+    public void restartGame()
+    {
+        SceneManager.LoadScene("GameScene");
     }
 }
